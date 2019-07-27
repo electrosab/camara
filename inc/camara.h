@@ -4,6 +4,12 @@
  * License: bsd-3-clause (see LICENSE.txt)
  * Date: 2019/07/24
  *===========================================================================*/
+#define ESTADO_MAXIMO_CAMARA 6
+#define MOSTRANDO_BIENVENIDO  0
+#define SALUDO_INICIAL 3000
+#define TIEMPO_PARPADEAR 500
+
+
 
 /*=====[Avoid multiple inclusion - begin]====================================*/
 

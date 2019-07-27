@@ -3,68 +3,23 @@
 
 #include "sapi.h"        // <= Biblioteca sAPI
 #include "Main_camara.h"
+#include "LCD_camara.h"
 
 // Definir caracteres personalizados: https://omerk.github.io/lcdchargen/
+//DEFINES (PREGUNTAR EN DONDE VAN CORRECTAMENTE)
 
-// Caracter personalizado carita feliz :)
-const char smile[8] = {
-   0b00000000,
-   0b00001010,
-   0b00001010,
-   0b00001010,
-   0b00000000,
-   0b00010001,
-   0b00001110,
-   0b00000000,
-};
+/*typedef enum {
+   BIENVENIDO,
+   PANTALLA_PRINCIPAL_TEMP,
+   PANTALLA_PRINCIPAL_SD,
+   RETIRAR_SD,
+   CONFIGURAR_TEMP,
+   CONTROLANDO
+} estado_t;
 
-// Caracter personalizado letra e
-const char e_char[8] = {
-   0b01110,
-   0b10000,
-   0b10000,
-   0b01100,
-   0b01000,
-   0b10000,
-   0b10001,
-   0b01110
-};
+estado_t varDeEstado;
+*/
 
-// Caracter personalizado letra r
-const char r_char[8] = {
-   0b00000,
-   0b00000,
-   0b00000,
-   0b01110,
-   0b01000,
-   0b01000,
-   0b01000,
-   0b01000
-};
-
-// Caracter personalizado letra i
-const char i_char[8] = {
-   0b00000,
-   0b00100,
-   0b00000,
-   0b00100,
-   0b00100,
-   0b00100,
-   0b00100,
-   0b00110
-};
-
-// Caracter personalizado letra c
-const char c_char[8] = {
-   0b00000,
-   0b00000,
-   0b00000,
-   0b00110,
-   0b01000,
-   0b01000,
-   0b01001,
-   0b00110
-};
 
 //Temperatura - Termometro
 const char tempChar[8] = {
@@ -90,17 +45,6 @@ const char humChar[8] = {
    0b00000
 };
 
-// Viento
-const char vieChar[8] = {
-   0b00111,
-   0b11100,
-   0b00000,
-   0b00111,
-   0b11100,
-   0b00000,
-   0b00111,
-   0b11100
-};
 
 // Simbolo grados
 const char graChar[8] = {
@@ -114,18 +58,15 @@ const char graChar[8] = {
    0b00000
 };
 
-
-
-
 char tempString[] = "25";
 char humString[] = "50";
 char vieString[] = "10";
 
 
-void Enviar_Pantalla(uint16_t pantalla)
+void Enviar_Pantalla(int varDeEstado)
 {
 
-   switch (pantalla) {
+   switch (varDeEstado) {
    case BIENVENIDO:
 
 
@@ -151,6 +92,31 @@ void Enviar_Pantalla(uint16_t pantalla)
 
       break;
 
+   case PANTALLA_PRINCIPAL_SD:
+      lcdClear(); // Borrar la pantalla
+      lcdGoToXY( 0, 0 );
+      lcdSendStringRaw( "pantalla a" );
+
+      break;
+
+   case RETIRAR_SD:
+      lcdClear(); // Borrar la pantalla
+      lcdGoToXY( 0, 0 );
+      lcdSendStringRaw( "pantalla a" );
+      break;
+
+
+ case CONFIGURAR_TEMP:
+      lcdClear(); // Borrar la pantalla
+      lcdGoToXY( 0, 0 );
+      lcdSendStringRaw( "pantalla a" );
+      break;
+
+ case CONTROLANDO:
+      lcdClear(); // Borrar la pantalla
+      lcdGoToXY( 0, 0 );
+      lcdSendStringRaw( "pantalla a" );
+      break;
 
 
    } // llave el switch
